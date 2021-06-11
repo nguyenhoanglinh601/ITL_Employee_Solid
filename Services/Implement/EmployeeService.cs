@@ -1,5 +1,6 @@
 ﻿using SOLID_example_2.Model;
 using SOLID_example_2.Respositories.Implement;
+using SOLID_example_2.Respositories.Interface;
 using SOLID_example_2.Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,16 @@ namespace SOLID_example_2.Services.Implement
 {
     public class EmployeeService : IEmployeeCRUD
     {
-        EmployeeRespository employeeRespository;
+        private readonly IEmployeeRespository _employeeRespository;
+        public EmployeeService(IEmployeeRespository employeeRespository)
+        {
+            _employeeRespository = employeeRespository;
+        }
         public async Task<Employee> Create(Employee employee)
         {
             try
             {
-                Employee emp = await employeeRespository.Create(employee);
+                Employee emp = await _employeeRespository.Create(employee);
                 return emp;
             }
             catch
@@ -26,20 +31,20 @@ namespace SOLID_example_2.Services.Implement
 
         public async Task<Employee> Delete(long id)
         {
-            bool isExist = employeeRespository.CheckExist(id);
+            bool isExist = _employeeRespository.CheckExist(id);
             if (isExist == false)
             {
                 return null;
             }
 
-            Employee employee = await employeeRespository.Get(id);
-            Employee emp = await employeeRespository.Delete(employee);
+            Employee employee = await _employeeRespository.Get(id);
+            Employee emp = await _employeeRespository.Delete(employee);
             return emp;
         }
 
         public async Task<Employee> Get(long id)
         {
-            Employee employee = await employeeRespository.Get(id);
+            Employee employee = await _employeeRespository.Get(id);
 
             if (employee == null)
             {
@@ -51,7 +56,7 @@ namespace SOLID_example_2.Services.Implement
 
         public Task<List<Employee>> GetAll()
         {
-            return employeeRespository.GetAll();
+            return _employeeRespository.GetAll();
         }
 
         public Task<Employee> Update(long id, Employee employee)
@@ -61,7 +66,12 @@ namespace SOLID_example_2.Services.Implement
                 return null;
             }
 
-            return employeeRespository.Update(employee);
+            return _employeeRespository.Update(employee);
+        }
+
+        public bool CheckIsExist(long id)
+        {
+            return _employeeRespository.CheckExist(id);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOLID_example_2.Respositories.Interface
 {
-    interface IEmployeeRespository
+    public interface IEmployeeRespository
     {
         Task<List<Employee>> GetAll();
         Task<Employee> Get(long id);

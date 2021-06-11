@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SOLID_example_2.Model.DB_Setting;
+using SOLID_example_2.Register;
 
 namespace SOLID_example_2
 {
@@ -29,6 +30,8 @@ namespace SOLID_example_2
         {
             services.AddControllers();
             services.AddDbContext<Employee_Solid_Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Employee_Solid_Context")));
+            services.RegisterApiRepositories();
+            services.RegisterApiService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
