@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SOLID_example_2.Model.DB_Setting;
 using SOLID_example_2.Register;
+using Microsoft.Net.Http.Headers;
 
 namespace SOLID_example_2
 {
@@ -28,6 +29,15 @@ namespace SOLID_example_2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(
+                options => options.AddPolicy("MyAllowHeadersPolicy",
+                builder =>
+                {
+                     // requires using Microsoft.Net.Http.Headers;
+                     builder.WithOrigins("http://localhost:4200")
+                           .WithHeaders(HeaderNames.ContentType, "x-custom-header");
+                })
+            );
             services.AddControllers();
             services.AddDbContext<Employee_Solid_Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Employee_Solid_Context")));
             services.RegisterApiRepositories();
@@ -41,6 +51,13 @@ namespace SOLID_example_2
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+            );
 
             app.UseHttpsRedirection();
 

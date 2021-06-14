@@ -8750,23 +8750,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\intern.ict002\\.nuget\\packages\\": {},
+    "C:\\Users\\Asus\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\intern.ict002\\Desktop\\SOLID_example_2\\SOLID_example_2.csproj",
+      "projectUniqueName": "F:\\ITL\\ITL_Employee_Solid\\SOLID_example_2.csproj",
       "projectName": "SOLID_example_2",
-      "projectPath": "C:\\Users\\intern.ict002\\Desktop\\SOLID_example_2\\SOLID_example_2.csproj",
-      "packagesPath": "C:\\Users\\intern.ict002\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\intern.ict002\\Desktop\\SOLID_example_2\\obj\\",
+      "projectPath": "F:\\ITL\\ITL_Employee_Solid\\SOLID_example_2.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "F:\\ITL\\ITL_Employee_Solid\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\intern.ict002\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8778,6 +8778,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8789,6 +8790,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -8831,7 +8833,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }

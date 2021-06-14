@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <h2 class="text-center w-100">Thông tin nhân viên</h2>
+    </div>
+    <div class="row p-2 border rounded">
+        <div class="col-md-6">
+            <label>Họ tên</label>
+            <input class="form-control" id="name"/>
+            <span class="text-danger" id="message_validate_name"></span>
+        </div>
+        <div class="col-md-6">
+            <label>Số điện thoại</label>
+            <input class="form-control" id="phoneNumber"/>
+            <span class="text-danger" id="message_validate_phoneNumber"></span>
+        </div>
+        <div class="col-md-6">
+            <label>Email</label>
+            <input class="form-control" id="email"/>
+            <span class="text-danger" id="message_validate_email"></span>
+        </div>
+        <div class="col-md-6 p-3 pt-md-5">
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="isWork" />
+                <label class="form-check-label" for="isWork">còn làm việc</label>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+            <button class="btn btn-primary mx-2" (click)="CreateEmployee()" *ngIf="ActionStatus=='create'">
+                Thêm nhân viên
+            </button>
+            <button class="btn btn-success mx-2" (click)="UpdateEmployee()" *ngIf="ActionStatus=='update'">
+                Cập nhập
+            </button>
+            <button class="btn btn-secondary mx-2" (click)="cancelUpdate()" *ngIf="ActionStatus=='update'">
+                Hủy
+            </button>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Mã nhân viên</th>
+            <th scope="col">Họ tên</th>
+            <th scope="col">Số điện thoại</th>
+            <th scope="col">Email</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cursor" *ngFor="let Employee of Employees" (click)="SetInfo(Employee.id)">
+            <th scope="row">{{Employee.id}}</th>
+            <td>{{Employee.name}}</td>
+            <td>{{Employee.phoneNumber}}</td>
+            <td>{{Employee.email}}</td>
+            <td>{{Employee.status==true? "Còn làm việc":"Đã nghĩ"}}</td>
+            <td><i class="fas fa-trash-alt text-danger" (click)="DeleteEmployee(Employee.id)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
